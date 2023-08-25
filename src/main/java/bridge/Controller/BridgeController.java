@@ -21,7 +21,7 @@ public class BridgeController {
         this.outputView = outputView;
     }
 
-    private void play() {
+    public void play() {
         List<String> bridge = generateBridge();
         bridgeGame = new BridgeGame(bridge);
         startGame();
