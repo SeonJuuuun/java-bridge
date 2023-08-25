@@ -21,6 +21,12 @@ public class BridgeController {
         this.outputView = outputView;
     }
 
+    private void play() {
+        List<String> bridge = generateBridge();
+        bridgeGame = new BridgeGame(bridge);
+        startGame();
+    }
+
     private int initBridgeSize() {
         return inputView.readBridgeSize();
     }
@@ -46,6 +52,7 @@ public class BridgeController {
     private boolean runGameRound() {
         String move = inputPlayerMove();
         boolean result = bridgeGame.move(move);
+        outputView.printMap(bridgeGame);
         return result;
     }
 
