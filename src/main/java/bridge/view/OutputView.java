@@ -40,7 +40,6 @@ public class OutputView {
         System.out.println("총 시도한 횟수: " + trialCount);
     }
 
-
     private Map<MoveDirection, List<String>> generateMap(BridgeGame bridgeGame) {
         int round = bridgeGame.getRound();
         List<String> bridge = bridgeGame.getBridge();
