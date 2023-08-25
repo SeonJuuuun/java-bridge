@@ -22,6 +22,11 @@ public class InputValidator {
         checkString(inputBridgeMove);
     }
 
+    public static void validateBridgeCommand(String inputBridgeRetryCommand) {
+        validateBlank(inputBridgeRetryCommand);
+        checkString(inputBridgeRetryCommand);
+    }
+
     private static Integer checkInteger(String input) {
         try {
             return Integer.valueOf(input);
