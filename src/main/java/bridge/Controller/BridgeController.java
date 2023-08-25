@@ -29,6 +29,16 @@ public class BridgeController {
         return bridgeMaker.makeBridge(initBridgeSize());
     }
 
+    private void startGame() {
+        for (int i = 0; i < bridgeGame.getBridgeSize(); i++) {
+            boolean roundResult = runGameRound();
+            if (!roundResult) {
+                retryGameCommand();
+                break;
+            }
+        }
+    }
+
     private String inputPlayerMove() {
         return inputView.readMoving();
     }
@@ -41,5 +51,17 @@ public class BridgeController {
 
     private String inputPlayerRetryCommand() {
         return inputView.readGameCommand();
+    }
+
+    private void retryGameCommand() {
+        String gameCommand = inputPlayerRetryCommand();
+        if (gameCommand.equals("R")) {
+            retry();
+        }
+    }
+
+    private void retry() {
+        bridgeGame.retry();
+        startGame();
     }
 }
