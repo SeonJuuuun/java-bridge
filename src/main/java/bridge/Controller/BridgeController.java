@@ -32,4 +32,10 @@ public class BridgeController {
     private String inputPlayerMove() {
         return inputView.readMoving();
     }
+
+    private boolean runGameRound() {
+        String move = inputPlayerMove();
+        boolean result = bridgeGame.move(move);
+        return result;
+    }
 }
