@@ -28,4 +28,8 @@ public class BridgeController {
     private List<String> generateBridge() {
         return bridgeMaker.makeBridge(initBridgeSize());
     }
+
+    private String inputPlayerMove() {
+        return inputView.readMoving();
+    }
 }
