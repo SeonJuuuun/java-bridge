@@ -5,6 +5,7 @@ import bridge.BridgeMaker;
 import bridge.BridgeNumberGenerator;
 import bridge.view.InputView;
 import bridge.view.OutputView;
+import java.util.List;
 
 public class BridgeController {
 
@@ -22,5 +23,9 @@ public class BridgeController {
 
     private int initBridgeSize() {
         return inputView.readBridgeSize();
+    }
+
+    private List<String> generateBridge() {
+        return bridgeMaker.makeBridge(initBridgeSize());
     }
 }
