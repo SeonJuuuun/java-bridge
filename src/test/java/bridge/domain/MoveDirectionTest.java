@@ -20,4 +20,11 @@ class MoveDirectionTest {
         assertThatThrownBy(() -> MoveDirection.getDirectionFromMove(3))
             .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("U와 D가 아닌 값이 들어오면 예외를 발생한다.")
+    @Test
+    void U와_D가_아닌_값_예외_테스트() throws Exception {
+        assertThatThrownBy(() -> MoveDirection.of("R"))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
 }

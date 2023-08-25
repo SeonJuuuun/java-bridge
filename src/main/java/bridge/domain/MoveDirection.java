@@ -8,6 +8,7 @@ public enum MoveDirection {
     DOWN(0, "D");
 
     private static final String INVALID_BRIDGE_RANGE_MESSAGE = "0과 1사이의 값을 입력해주세요.";
+    private static final String INVALID_MOVE_DIRECTION = "U와 D중 하나의 값을 입력해주세요.";
 
     private final int move;
 
@@ -30,7 +31,7 @@ public enum MoveDirection {
         return Arrays.stream(values())
             .filter(v -> direction.equals(v.direction))
             .findFirst()
-            .orElseThrow();
+            .orElseThrow(() -> new IllegalArgumentException(INVALID_MOVE_DIRECTION));
     }
 
     public MoveDirection getOtherSide() {
