@@ -32,4 +32,11 @@ public enum MoveDirection {
             .findFirst()
             .orElseThrow();
     }
+
+    public MoveDirection getOtherSide() {
+        return Arrays.stream(values())
+            .filter(direction -> direction != this)
+            .findFirst()
+            .orElseThrow(IllegalStateException::new);
+    }
 }
