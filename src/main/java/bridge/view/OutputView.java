@@ -61,4 +61,16 @@ public class OutputView {
         }
         return map;
     }
+
+    private void cross(Map<MoveDirection, List<String>> row, MoveDirection moveDirection,
+        boolean isCorrectMoving) {
+        MoveDirection otherSide = moveDirection.getOtherSide();
+        if (isCorrectMoving) {
+            row.get(otherSide).add(" ");
+            row.get(moveDirection).add("O");
+        } else {
+            row.get(otherSide).add("X");
+            row.get(moveDirection).add(" ");
+        }
+    }
 }
