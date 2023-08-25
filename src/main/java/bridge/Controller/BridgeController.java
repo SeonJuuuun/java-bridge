@@ -38,4 +38,8 @@ public class BridgeController {
         boolean result = bridgeGame.move(move);
         return result;
     }
+
+    private String inputPlayerRetryCommand() {
+        return inputView.readGameCommand();
+    }
 }
