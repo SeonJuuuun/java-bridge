@@ -25,6 +25,7 @@ public class BridgeController {
         List<String> bridge = generateBridge();
         bridgeGame = new BridgeGame(bridge);
         startGame();
+        outputView.printResult(bridgeGame.isSuccess(), bridgeGame.getTrialCount(), bridgeGame);
     }
 
     private int initBridgeSize() {
