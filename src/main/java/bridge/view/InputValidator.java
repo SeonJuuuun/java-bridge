@@ -1,10 +1,11 @@
 package bridge.view;
 
+import static bridge.Constants.BridgeConstants.ERROR_MESSAGE;
+
 import java.util.regex.Pattern;
 
 public class InputValidator {
 
-    private static final String ERROR_MESSAGE = "[ERROR]";
     private static final String INVALID_INPUT_BRIDGE_NUMBER = " 숫자 형식이 아닙니다.";
     private static final String INVALID_BLANK = " 값을 입력하세요.";
     private static final String INVALID_INPUT_BRIDGE_STRING = " 문자 형식이 아닙니다.";
@@ -60,7 +61,7 @@ public class InputValidator {
     }
 
     private static void checkInputMove(String move) {
-        if (!(move.equals("U") || move.equals("R"))) {
+        if (!(move.equals("U") || move.equals("D"))) {
             throw new IllegalArgumentException(ERROR_MESSAGE + INVALID_MOVE_DIRECTION);
         }
     }

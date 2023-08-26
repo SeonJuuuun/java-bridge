@@ -1,5 +1,7 @@
 package bridge.view;
 
+import static bridge.Constants.BridgeConstants.space;
+
 import bridge.BridgeGame;
 import bridge.domain.MoveDirection;
 
@@ -13,6 +15,19 @@ import java.util.Map;
  */
 public class OutputView {
 
+
+    private static final String GAME_RESULT = space + "최종 게임 결과";
+    private static final String JUDGE_GAME_SUCCESS = "게임 성공 여부: ";
+    private static final String TRY_GAME_COUNT = "총 시도한 횟수: ";
+    private static final String SUCCESS = "성공";
+    private static final String FAIL = "실패";
+    private static final String BLANK = " ";
+    private static final String SUCCESS_O = "O";
+    private static final String FAIL_X = "X";
+    private static final String BRIDGE_DELIMITER = " | ";
+    private static final String BRIDGE_START = "[ ";
+    private static final String BRIDGE_END = " ]";
+
     /**
      * 현재까지 이동한 다리의 상태를 정해진 형식에 맞춰 출력한다.
      * <p>
@@ -25,7 +40,7 @@ public class OutputView {
     }
 
     private void printRow(List<String> row) {
-        System.out.println("[ " + String.join(" | ", row) + " ]");
+        System.out.println(BRIDGE_START + String.join(BRIDGE_DELIMITER, row) + BRIDGE_END);
     }
 
     /**
@@ -33,11 +48,18 @@ public class OutputView {
      * <p>
      * 출력을 위해 필요한 메서드의 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
      */
-    public void printResult(boolean success, int trialCount, BridgeGame bridgeGame) {
-        System.out.println("최종 게임 결과");
+    public void printResult(int tryCount, BridgeGame bridgeGame) {
+        System.out.println(GAME_RESULT);
         printMap(bridgeGame);
-        System.out.println("게임 성공 여부: " + (success ? "성공" : "실패"));
-        System.out.println("총 시도한 횟수: " + trialCount);
+        System.out.println(JUDGE_GAME_SUCCESS + checkSuccess(bridgeGame.isSuccess()));
+        System.out.println(TRY_GAME_COUNT + tryCount);
+    }
+
+    private String checkSuccess(boolean success) {
+        if (success) {
+            return SUCCESS;
+        }
+        return FAIL;
     }
 
     private Map<MoveDirection, List<String>> generateMap(BridgeGame bridgeGame) {
@@ -65,11 +87,11 @@ public class OutputView {
         boolean isCorrectMoving) {
         MoveDirection otherSide = moveDirection.getOtherSide();
         if (isCorrectMoving) {
-            row.get(otherSide).add(" ");
-            row.get(moveDirection).add("O");
+            row.get(otherSide).add(BLANK);
+            row.get(moveDirection).add(SUCCESS_O);
         } else {
-            row.get(otherSide).add("X");
-            row.get(moveDirection).add(" ");
+            row.get(otherSide).add(FAIL_X);
+            row.get(moveDirection).add(BLANK);
         }
     }
 }
