@@ -1,5 +1,7 @@
 package bridge.domain;
 
+import static bridge.Constants.BridgeConstants.ERROR_MESSAGE;
+
 import java.util.Arrays;
 
 public enum MoveDirection {
@@ -24,14 +26,14 @@ public enum MoveDirection {
             .filter(moveDirection -> moveDirection.move == move)
             .findFirst()
             .map(moveDirection -> moveDirection.direction)
-            .orElseThrow(() -> new IllegalArgumentException(INVALID_BRIDGE_RANGE_MESSAGE));
+            .orElseThrow(() -> new IllegalArgumentException(ERROR_MESSAGE + INVALID_BRIDGE_RANGE_MESSAGE));
     }
 
     public static MoveDirection of(String direction) {
         return Arrays.stream(values())
             .filter(v -> direction.equals(v.direction))
             .findFirst()
-            .orElseThrow(() -> new IllegalArgumentException(INVALID_MOVE_DIRECTION));
+            .orElseThrow(() -> new IllegalArgumentException(ERROR_MESSAGE + INVALID_MOVE_DIRECTION));
     }
 
     public MoveDirection getOtherSide() {
