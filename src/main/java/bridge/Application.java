@@ -10,6 +10,10 @@ public class Application {
         // TODO: 프로그램 구현
         BridgeController bridgeController = new BridgeController(new InputView(), new OutputView(),
             new BridgeRandomNumberGenerator());
-        bridgeController.play();
+        try {
+            bridgeController.play();
+        }catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
     }
 }
