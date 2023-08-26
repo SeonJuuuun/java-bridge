@@ -9,7 +9,7 @@ import java.util.List;
 public class BridgeGame {
 
     private final List<String> bridge;
-    private int tryCount = 0;
+    private int tryCount = 1;
     private int round = 0;
     private boolean success = false;
 
